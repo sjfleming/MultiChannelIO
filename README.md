@@ -15,26 +15,26 @@ daq = MultiChannelIO(inputChannels, outputChannels, digitalChannels, scalings, c
 ```
 
 ```inputChannels``` is a list of the physical device input channels,
-	e.g. ```['Dev1/ai0','Dev1/ai1']```
+	e.g. ```['Dev1/ai0','Dev1/ai1']```.
 
 ```outputChannels``` is a list of the physical device output channels,
-	e.g. ```['Dev1/ao0']```
+	e.g. ```['Dev1/ao0']```.
 
 ```digitalChannels``` is a list of the physical device digital output channels,
-	e.g. ```['Dev1/port0/line1']```
+	e.g. ```['Dev1/port0/line1']```.
 
 optionally, you can input scalings, channelVoltageLimits, and reset
 
-```scalings``` is a list of values of scale factors to apply
+```scalings``` is a list of values of scale factors to apply to analog inputs and outputs
 	before writing and after reading, 
-	e.g. [100,0.05]
-	note: specify the scalings for all inputs and outputs if you specify any
+	e.g. [100,0.05].  
+	Note: specify the scalings for all inputs and outputs if you specify any.
 
 ```channelVoltageLimits``` is a list of pairs of vales of channel range in Volts
-	e.g. ((-10.0,10.0),(-10.0,10.0),(-10.0,10.0))
-	note: specify the limits for all inputs and outputs if you specify any
+	e.g. ((-10.0,10.0),(-10.0,10.0),(-10.0,10.0)).  
+	Note: specify the limits for all inputs and outputs if you specify any.
 
-```reset``` is a boolean for whether the channels should be reset at instantiation
+```reset``` is a boolean for whether the channels should be reset at instantiation.
 
 
 ## Methods
