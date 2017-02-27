@@ -10,22 +10,30 @@ MultiChannelIO is a class written in python meant to simplify the coding of read
 
 ## Usage
 
-MultiChannelIO(inputChannels, outputChannels, digitalChannels, scalings, channelVoltageLimits, reset)
+```python
+daq = MultiChannelIO(inputChannels, outputChannels, digitalChannels, scalings, channelVoltageLimits, reset)
+```
 
-inputChannels is a list of the physical device input channels,
-	e.g. ['Dev1/ai0','Dev1/ai1']
-outputChannels is a list of the physical device output channels,
-	e.g. ['Dev1/ao0']
-digitalChannels is a list of the physical device digital output channels,
-	e.g. ['Dev1/ao0']
+```inputChannels``` is a list of the physical device input channels,
+	e.g. ```['Dev1/ai0','Dev1/ai1']```
+
+```outputChannels``` is a list of the physical device output channels,
+	e.g. ```['Dev1/ao0']```
+
+```digitalChannels``` is a list of the physical device digital output channels,
+	e.g. ```['Dev1/port0/line1']```
 
 optionally, you can input scalings, channelVoltageLimits, and reset
+
 scalings is a list of values of scale factors to apply
 	before writing and after reading
-	e.g. [0.1,0.1,0.05]
+	e.g. [100,0.05,1]
+	note: specify the scalings for all inputs and outputs if you specify any
+
 channelVoltageLimits is a list of pairs of vales of channel range in Volts
-	e.g. ((-10.0,10.0),(-10.0,10.0),(-10.0,10,0))
+	e.g. ((-10.0,10.0),(-10.0,10.0),(-10.0,10.0))
 	note: specify the limits for all inputs and outputs if you specify any
+
 reset is a boolean for whether the channels should be reset at instantiation
 
 
@@ -49,7 +57,7 @@ Write a persistent value to the specified analog output channel (defaults to fir
 
 ### readMean(input_channel, [optional] number_of_points)
 
-Read ten points (or the number of points specified) from the specified input channel, and return the mean value.
+Read ten points (or the number of points specified, should be less than 2000) from the specified input channel, and return the mean value.
 
 ### digitalPulse(digital_output_channel)
 
@@ -61,35 +69,39 @@ Resets the device.  All outputs return to zero.
 
 ## Example Usage
 
-% setup
+```python
+# setup
 
 from MultiChannelIO import MultiChannelIO
-daq = MultiChannelIO(['Dev1/ai0'],['Dev1/ao0’],[‘/Dev1/port0/line1’],scalings=[100.0,0.05])
+
+daq = MultiChannelIO(['Dev1/ai0'],['Dev1/ao0'],['Dev1/port0/line1'],scalings=[100.0,0.05])
+
 daq.configure()
 
-% set an output voltage (remains indefinitely)
+# set an output voltage (remains indefinitely)
 
 daq.write('Dev1/ao0’,50)
 
-% read voltages
+# read voltages
 
 daq.readAll()
 
-% read one channel's voltage
+# read one channel's voltage
 
 daq.read('Dev1/ai0')
 
-% read 1000 samples and take the mean
+# read 1000 samples and take the mean
 
 daq.readMean('Dev1/ai0',1000)
 
-% send a digital high pulse to port0 line1
+# send a digital high pulse to port0 line1
 
 daq.digitalPulse()
 
-% reset everything
+# reset everything
 
 daq.reset()
+```
 
 ## Who
 
