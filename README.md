@@ -27,7 +27,7 @@ optionally, you can input scalings, channelVoltageLimits, and reset
 
 ```scalings``` is a list of values of scale factors to apply
 	before writing and after reading, 
-	e.g. [100,0.05,1]
+	e.g. [100,0.05]
 	note: specify the scalings for all inputs and outputs if you specify any
 
 ```channelVoltageLimits``` is a list of pairs of vales of channel range in Volts
@@ -71,35 +71,26 @@ Resets the device.  All outputs return to zero.
 
 ```python
 # setup
-
 from MultiChannelIO import MultiChannelIO
-
 daq = MultiChannelIO(['Dev1/ai0'],['Dev1/ao0'],['Dev1/port0/line1'],scalings=[100.0,0.05])
-
 daq.configure()
 
 # set an output voltage (remains indefinitely)
-
 daq.write('Dev1/ao0’,50)
 
 # read voltages
-
 daq.readAll()
 
 # read one channel's voltage
-
 daq.read('Dev1/ai0')
 
 # read 1000 samples and take the mean
-
 daq.readMean('Dev1/ai0',1000)
 
 # send a digital high pulse to port0 line1
-
 daq.digitalPulse()
 
 # reset everything
-
 daq.reset()
 ```
 
