@@ -25,16 +25,16 @@ daq = MultiChannelIO(inputChannels, outputChannels, digitalChannels, scalings, c
 
 optionally, you can input scalings, channelVoltageLimits, and reset
 
-scalings is a list of values of scale factors to apply
-	before writing and after reading
+```scalings``` is a list of values of scale factors to apply
+	before writing and after reading, 
 	e.g. [100,0.05,1]
 	note: specify the scalings for all inputs and outputs if you specify any
 
-channelVoltageLimits is a list of pairs of vales of channel range in Volts
+```channelVoltageLimits``` is a list of pairs of vales of channel range in Volts
 	e.g. ((-10.0,10.0),(-10.0,10.0),(-10.0,10.0))
 	note: specify the limits for all inputs and outputs if you specify any
 
-reset is a boolean for whether the channels should be reset at instantiation
+```reset``` is a boolean for whether the channels should be reset at instantiation
 
 
 ## Methods
