@@ -15,7 +15,7 @@ daq = MultiChannelIO(inputChannels, outputChannels, digitalChannels, scalings, c
 ```
 
 ```inputChannels``` is a list of the physical device input channels,
-	e.g. ```['Dev1/ai0','Dev1/ai1']```.
+	e.g. ```['Dev1/ai0', 'Dev1/ai1']```.
 
 ```outputChannels``` is a list of the physical device output channels,
 	e.g. ```['Dev1/ao0']```.
@@ -27,11 +27,11 @@ optionally, you can input scalings, channelVoltageLimits, and reset
 
 ```scalings``` is a list of values of scale factors to apply to analog inputs and outputs
 	before writing and after reading, 
-	e.g. [100,0.05].  
+	e.g. [100, 0.05].  
 	Note: specify the scalings for all inputs and outputs if you specify any.
 
 ```channelVoltageLimits``` is a list of pairs of vales of channel range in Volts
-	e.g. ((-10.0,10.0),(-10.0,10.0),(-10.0,10.0)).  
+	e.g. ((-10.0,10.0), (-10.0,10.0), (-10.0,10.0)).  
 	Note: specify the limits for all inputs and outputs if you specify any.
 
 ```reset``` is a boolean for whether the channels should be reset at instantiation.
@@ -72,11 +72,11 @@ Resets the device.  All outputs return to zero.
 ```python
 # setup
 from MultiChannelIO import MultiChannelIO
-daq = MultiChannelIO(['Dev1/ai0'],['Dev1/ao0'],['Dev1/port0/line1'],scalings=[100.0,0.05])
+daq = MultiChannelIO(['Dev1/ai0'], ['Dev1/ao0'], ['Dev1/port0/line1'], scalings=[100.0, 0.05])
 daq.configure()
 
 # set an output voltage (remains indefinitely)
-daq.write('Dev1/ao0’,50)
+daq.write('Dev1/ao0’, 50)
 
 # read voltages
 daq.readAll()
@@ -85,7 +85,7 @@ daq.readAll()
 daq.read('Dev1/ai0')
 
 # read 1000 samples and take the mean
-daq.readMean('Dev1/ai0',1000)
+daq.readMean('Dev1/ai0', 1000)
 
 # send a digital high pulse to port0 line1
 daq.digitalPulse()
@@ -96,4 +96,4 @@ daq.reset()
 
 ## Who
 
-Stephen Fleming, PhD candidate at the Golovchenko Lab in the physics department at Harvard University.
+Stephen Fleming, during PhD studies in the Golovchenko Lab in the physics department at Harvard University.
